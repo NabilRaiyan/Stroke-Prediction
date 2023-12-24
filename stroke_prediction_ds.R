@@ -65,3 +65,19 @@ for (i in 1:length(stroke_ds$bmi)){
     stroke_ds$bmi[i] <- mode_bmi
   }
 }
+
+
+mode_smoking_status <- names(sort(table(stroke_ds$smoking_status), decreasing = TRUE))[1]
+mode_smoking_status
+stroke_ds$smoking_status[stroke_ds$smoking_status == "Unknown"] <- mode_smoking_status
+
+
+
+glucose_categories <- cut(stroke_ds$avg_glucose_level, breaks = c(-Inf, 50, 100, Inf), labels = c("Low", "Medium", "High"))
+stroke_ds$avg_glucose_level <- glucose_categories
+
+
+age_ranges <- c(0, 18, 35, 50, Inf)
+age_labels <- c("Children", "Adult", "Middle Age Adult", "Senior Adult")
+stroke_ds$age <- cut(stroke_ds$age, breaks = age_ranges, labels = age_labels, include.lowest = TRUE, right = FALSE)
+
