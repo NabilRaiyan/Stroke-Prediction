@@ -81,3 +81,14 @@ age_ranges <- c(0, 18, 35, 50, Inf)
 age_labels <- c("Children", "Adult", "Middle Age Adult", "Senior Adult")
 stroke_ds$age <- cut(stroke_ds$age, breaks = age_ranges, labels = age_labels, include.lowest = TRUE, right = FALSE)
 
+
+bmi_range <- c(-Inf, 18.5, 24.9, 29.9, Inf)
+bmi_labels <- c("Underweight", "Normal Weight", "Overweight", "Obese")
+stroke_ds$bmi <- cut(stroke_ds$bmi, breaks = bmi_range, labels = bmi_labels, include.lowest = TRUE)
+
+
+
+columns_to_remove <- c("id")
+stroke_ds <- stroke_ds[, !(names(stroke_ds) %in% columns_to_remove)]
+
+
