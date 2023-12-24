@@ -43,4 +43,22 @@ for (i in 1: length(stroke_ds$avg_glucose_level)){
   }
 }
 
-stroke_ds$ever_married <- ifelse(stroke_ds$ever_married == 1, "Yes", ifelse(stroke_ds$ever_married == 0, "No", NA))
+mode_bmi <- as.numeric(names(sort(table(stroke_ds$bmi), decreasing = TRUE)[1]))
+stroke_ds$bmi <- as.numeric(as.character(stroke_ds$bmi))
+
+bmi_outliers <- boxplot(stroke_ds$bmi, main = "Boxplot for BMI column", ylab = "BMI")$out
+cat("Potential outliers of BMI column: ", bmi_outliers, "\n")
+
+bmi_outliers_rows <- which(stroke_ds$bmi < 0 | stroke_ds$bmi > 47 | stroke_ds$bmi < 15)
+cat("Potetial rows of outliers of BMI column: ", bmi_outliers_rows, "\n")
+
+bmi_missing_value_rows <- which(is.na(stroke_ds$bmi))
+cat("Potential rows of missing value in BMI: ", bmi_missing_value_rows, "\n")
+
+stroke_ds$bmi[is.na(stroke_ds$bmi)] <- mode_bmi
+
+for (i in 1:length(stroke_ds$bmi)){
+  if (stroke_ds$bmi[i] < 0 | stroke_ds$bmi[i] > 40 | stroke_ds$bmi[i] < 15){
+    stroke_ds$bmi[i] <- mode_bmi
+  }
+}
