@@ -1,0 +1,27 @@
+{
+    "id": "87805F1C",
+    "path": "E:/Courses/AIUB Courses/9th Semester/Introduction to data science/Final Term/Stock Prediction Project/stroke_prediction_ds.R",
+    "project_path": "stroke_prediction_ds.R",
+    "type": "r_source",
+    "hash": "2759666521",
+    "contents": "",
+    "dirty": false,
+    "created": 1703406480517.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "tempName": "Untitled1",
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "3,141",
+        "scrollLine": "0"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1703406681,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1703406681813,
+    "read_only": false,
+    "read_only_alternatives": []
+}
