@@ -67,21 +67,15 @@ bmi_range <- c(-Inf, 18.5, 24.9, 29.9, Inf)
 bmi_labels <- c("Underweight", "Normal Weight", "Overweight", "Obese")
 stroke_ds$bmi <- cut(stroke_ds$bmi, breaks = bmi_range, labels = bmi_labels, include.lowest = TRUE)
 
-# Id column
 
 contingency_table_id <- table(stroke_ds$stroke, stroke_ds$id)
 chi_square_result_id <- chisq.test(contingency_table_id)
 print(chi_square_result_id)
 
 
-# Gender column
-
 contingency_table_gender <- table(stroke_ds$stroke, stroke_ds$gender)
 chi_square_result_gender <- chisq.test(contingency_table_gender)
 print(chi_square_result_gender)
-
-
-# age column (ok)
 
 
 contingency_table_age <- table(stroke_ds$stroke, stroke_ds$age)
@@ -89,27 +83,22 @@ chi_square_result_age <- chisq.test(contingency_table_age)
 print(chi_square_result_age)
 
 
-# Hypertension column (ok)
 
 contingency_table_hypertension <- table(stroke_ds$stroke, stroke_ds$hypertension)
 chi_square_result_hypertension <- chisq.test(contingency_table_hypertension)
 print(chi_square_result_hypertension)
 
 
-# heart disease column (ok)
 
 contingency_table_heart_disease <- table(stroke_ds$stroke, stroke_ds$heart_disease)
 chi_square_result_heart_disease <- chisq.test(contingency_table_heart_disease)
 print(chi_square_result_heart_disease)
 
 
-# ever married column (ok)
-
 contingency_table_ever_married <- table(stroke_ds$stroke, stroke_ds$ever_married)
 chi_square_result_ever_married <- chisq.test(contingency_table_ever_married)
 print(chi_square_result_ever_married)
 
-# work type column (ok)
 
 contingency_table_work_type <- table(stroke_ds$stroke, stroke_ds$work_type)
 chi_square_result_work_type <- chisq.test(contingency_table_work_type)
@@ -117,22 +106,16 @@ print(chi_square_result_work_type)
 
 
 
-# Residence type column 
-
 contingency_table_residence_type <- table(stroke_ds$stroke, stroke_ds$Residence_type)
 chi_square_result_residence_type <- chisq.test(contingency_table_residence_type)
 print(chi_square_result_residence_type)
 
 
 
-# Bmi column (ok)
-
 contingency_table_bmi <- table(stroke_ds$stroke, stroke_ds$bmi)
 chi_square_result_bmi <- chisq.test(contingency_table_bmi)
 print(chi_square_result_bmi)
 
-
-# Smoking status column (ok)
 
 contingency_table_smoking_status <- table(stroke_ds$stroke, stroke_ds$smoking_status)
 chi_square_result_smoking_status <- chisq.test(contingency_table_smoking_status)
@@ -144,4 +127,66 @@ stroke_ds <- stroke_ds[, !(names(stroke_ds) %in% columns_to_remove)]
 
 
 
+stroke_ds$stroke <-  ifelse(stroke_ds$stroke == 1, "Yes", ifelse(stroke_ds$stroke == 0, "No", NA))
+
+
+# install.packages(c("caret", "e1071"))
+library(caret)
+library(e1071)
+
+selected_attributes <- c("age", "hypertension", "heart_disease", "ever_married", 
+                         "work_type", "Residence_type", "bmi", "smoking_status", "stroke")
+selected_data <- stroke_ds[, selected_attributes]
+
+
+set.seed(123)
+train_indices <- createDataPartition(selected_data$stroke, p = 0.7, list = FALSE)
+train_data <- selected_data[train_indices, ]
+test_data <- selected_data[-train_indices, ]
+
+for (col in c("hypertension", "heart_disease", "ever_married", "work_type", "Residence_type", "smoking_status", "stroke")) {
+  train_data[[col]] <- as.factor(train_data[[col]])
+  test_data[[col]] <- factor(test_data[[col]], levels = levels(train_data[[col]]))
+}
+
+nb_model_split <- naiveBayes(stroke ~ ., data = train_data)
+
+nb_pred_split <- predict(nb_model_split, newdata = test_data)
+
+conf_matrix_split <- confusionMatrix(nb_pred_split, test_data$stroke)
+accuracy_split <- conf_matrix_split$overall["Accuracy"]
+
+cat("Approach 1 - Data Splitting:\n")
+cat("Accuracy:", accuracy_split, "\n")
+cat("Confusion Matrix:\n")
+print(conf_matrix_split)
+
+
+
+ctrl <- trainControl(method = "cv", number = 10, savePredictions = TRUE)
+nb_model_cv <- train(stroke ~ ., data = selected_data, method = "naive_bayes", trControl = ctrl)
+
+
+accuracy_cv <- max(nb_model_cv$results$Accuracy)
+
+cat("\nApproach 2 - 10-fold Cross-validation:\n")
+cat("Accuracy:", accuracy_cv, "\n")
+cat("Confusion Matrix (average over folds):\n")
+print(confusionMatrix(nb_model_cv$pred$pred, nb_model_cv$pred$obs))
+
+
+
+conf_matrix <- confusionMatrix(nb_pred, test_data$stroke)
+
+
+recall <- conf_matrix$byClass["Sensitivity"]
+precision <- conf_matrix$byClass["Pos Pred Value"]
+f_measure <- 2 * (precision * recall) / (precision + recall)
+
+cat("Confusion Matrix:\n")
+print(conf_matrix)
+
+cat("\nRecall:", recall, "\n")
+cat("Precision:", precision, "\n")
+cat("F-measure:", f_measure, "\n")
 
