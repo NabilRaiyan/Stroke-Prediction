@@ -115,3 +115,24 @@ chi_square_result_hypertension <- chisq.test(contingency_table_hypertension)
 print(chi_square_result_hypertension)
 
 
+# heart disease column 
+
+contingency_table_heart_disease <- table(stroke_ds$stroke, stroke_ds$heart_disease)
+chi_square_result_heart_disease <- chisq.test(contingency_table_heart_disease)
+print(chi_square_result_heart_disease)
+
+
+# ever married column 
+
+contingency_table_ever_married <- table(stroke_ds$stroke, stroke_ds$ever_married)
+chi_square_result_ever_married <- chisq.test(contingency_table_ever_married)
+print(chi_square_result_ever_married)
+
+
+
+
+
+
+
+
+
