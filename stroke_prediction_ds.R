@@ -1,6 +1,6 @@
 
 
-stroke_ds <- read.csv("E:/Courses/AIUB Courses/9th Semester/Introduction to stroke_ds science/Final Term/Strock Prediction Project/stroke_ds.csv")
+stroke_ds <- read.csv("E:/Courses/AIUB Courses/9th Semester/Introduction to data science/Final Term/Strock Prediction Project/stroke_ds.csv")
 stroke_ds
 
 head(stroke_ds)
@@ -25,22 +25,6 @@ stroke_ds$gender[is.na(stroke_ds$gender)] <- mode_gender
 age_outliers <- boxplot(stroke_ds$age, main = "Boxplot for age attribute", ylab = "Age")$out
 cat("Potentials outliers on age attribute are: ", age_outliers, "\n")
 
-
-
-avg_glucose_level_outliers <- boxplot(stroke_ds$avg_glucose_level, main = "Boxplot for Avg Glucose level attribute", ylab = "Avg Glucose level")$out
-cat("Potentials outliers for Avg Glucose level are: ", avg_glucose_level_outliers, "\n")
-
-avg_glucose_level_outliers_rows <- which(stroke_ds$avg_glucose_level > 115)
-cat("Potential rows for outliers in avg glucose level column: ", avg_glucose_level_outliers_rows, "\n")
-
-
-mode_glucose_level <- as.numeric(names(sort(table(stroke_ds$avg_glucose_level), decreasing = TRUE)[1]))
-
-for (i in 1: length(stroke_ds$avg_glucose_level)){
-  if (stroke_ds$avg_glucose_level[i] > 115){
-    stroke_ds$avg_glucose_level[i] <- mode_glucose_level
-  }
-}
 
 
 stroke_ds$bmi[stroke_ds$bmi == "N/A"] <- NA
@@ -70,11 +54,8 @@ for (i in 1:length(stroke_ds$bmi)){
 mode_smoking_status <- names(sort(table(stroke_ds$smoking_status), decreasing = TRUE))[1]
 mode_smoking_status
 stroke_ds$smoking_status[stroke_ds$smoking_status == "Unknown"] <- mode_smoking_status
+stroke_ds <- stroke_ds[, !(names(stroke_ds) %in% "avg_glucose_level")]
 
-
-
-glucose_categories <- cut(stroke_ds$avg_glucose_level, breaks = c(-Inf, 50, 100, Inf), labels = c("Low", "Medium", "High"))
-stroke_ds$avg_glucose_level <- glucose_categories
 
 
 age_ranges <- c(0, 18, 35, 50, Inf)
@@ -115,23 +96,51 @@ chi_square_result_hypertension <- chisq.test(contingency_table_hypertension)
 print(chi_square_result_hypertension)
 
 
-# heart disease column 
+# heart disease column (ok)
 
 contingency_table_heart_disease <- table(stroke_ds$stroke, stroke_ds$heart_disease)
 chi_square_result_heart_disease <- chisq.test(contingency_table_heart_disease)
 print(chi_square_result_heart_disease)
 
 
-# ever married column 
+# ever married column (ok)
 
 contingency_table_ever_married <- table(stroke_ds$stroke, stroke_ds$ever_married)
 chi_square_result_ever_married <- chisq.test(contingency_table_ever_married)
 print(chi_square_result_ever_married)
 
+# work type column (ok)
+
+contingency_table_work_type <- table(stroke_ds$stroke, stroke_ds$work_type)
+chi_square_result_work_type <- chisq.test(contingency_table_work_type)
+print(chi_square_result_work_type)
 
 
 
+# Residence type column 
 
+contingency_table_residence_type <- table(stroke_ds$stroke, stroke_ds$Residence_type)
+chi_square_result_residence_type <- chisq.test(contingency_table_residence_type)
+print(chi_square_result_residence_type)
+
+
+
+# Bmi column (ok)
+
+contingency_table_bmi <- table(stroke_ds$stroke, stroke_ds$bmi)
+chi_square_result_bmi <- chisq.test(contingency_table_bmi)
+print(chi_square_result_bmi)
+
+
+# Smoking status column (ok)
+
+contingency_table_smoking_status <- table(stroke_ds$stroke, stroke_ds$smoking_status)
+chi_square_result_smoking_status <- chisq.test(contingency_table_smoking_status)
+print(chi_square_result_smoking_status)
+
+
+columns_to_remove <- c("gender", "id")
+stroke_ds <- stroke_ds[, !(names(stroke_ds) %in% columns_to_remove)]
 
 
 
