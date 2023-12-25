@@ -168,6 +168,7 @@ nb_model_cv <- train(stroke ~ ., data = selected_data, method = "naive_bayes", t
 
 accuracy_cv <- max(nb_model_cv$results$Accuracy)
 
+
 cat("\nApproach 2 - 10-fold Cross-validation:\n")
 cat("Accuracy:", accuracy_cv, "\n")
 cat("Confusion Matrix (average over folds):\n")
