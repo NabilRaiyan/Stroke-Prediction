@@ -166,7 +166,6 @@ print(conf_matrix_split)
 ctrl <- trainControl(method = "cv", number = 10, savePredictions = TRUE)
 nb_model_cv <- train(stroke ~ ., data = selected_data, method = "naive_bayes", trControl = ctrl)
 
-
 accuracy_cv <- max(nb_model_cv$results$Accuracy)
 
 cat("\nApproach 2 - 10-fold Cross-validation:\n")
@@ -189,4 +188,5 @@ print(conf_matrix)
 cat("\nRecall:", recall, "\n")
 cat("Precision:", precision, "\n")
 cat("F-measure:", f_measure, "\n")
+
 
