@@ -1,6 +1,6 @@
 
 
-stroke_ds <- read.csv("E:/Courses/AIUB Courses/9th Semester/Introduction to data science/Final Term/Strock Prediction Project/stroke_ds.csv")
+stroke_ds <- read.csv("E:/Courses/AIUB Courses/9th Semester/Introduction to stroke_ds science/Final Term/Strock Prediction Project/stroke_ds.csv")
 stroke_ds
 
 head(stroke_ds)
@@ -86,9 +86,32 @@ bmi_range <- c(-Inf, 18.5, 24.9, 29.9, Inf)
 bmi_labels <- c("Underweight", "Normal Weight", "Overweight", "Obese")
 stroke_ds$bmi <- cut(stroke_ds$bmi, breaks = bmi_range, labels = bmi_labels, include.lowest = TRUE)
 
+# Id column
+
+contingency_table_id <- table(stroke_ds$stroke, stroke_ds$id)
+chi_square_result_id <- chisq.test(contingency_table_id)
+print(chi_square_result_id)
 
 
-columns_to_remove <- c("id")
-stroke_ds <- stroke_ds[, !(names(stroke_ds) %in% columns_to_remove)]
+# Gender column
+
+contingency_table_gender <- table(stroke_ds$stroke, stroke_ds$gender)
+chi_square_result_gender <- chisq.test(contingency_table_gender)
+print(chi_square_result_gender)
+
+
+# age column (ok)
+
+
+contingency_table_age <- table(stroke_ds$stroke, stroke_ds$age)
+chi_square_result_age <- chisq.test(contingency_table_age)
+print(chi_square_result_age)
+
+
+# Hypertension column (ok)
+
+contingency_table_hypertension <- table(stroke_ds$stroke, stroke_ds$hypertension)
+chi_square_result_hypertension <- chisq.test(contingency_table_hypertension)
+print(chi_square_result_hypertension)
 
 
