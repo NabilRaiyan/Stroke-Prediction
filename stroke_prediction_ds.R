@@ -175,6 +175,7 @@ print(confusionMatrix(nb_model_cv$pred$pred, nb_model_cv$pred$obs))
 
 
 
+
 conf_matrix <- confusionMatrix(nb_pred, test_data$stroke)
 recall <- conf_matrix$byClass["Sensitivity"]
 precision <- conf_matrix$byClass["Pos Pred Value"]
