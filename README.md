@@ -25,5 +25,5 @@ This repository contains the code and documentation for a stroke prediction proj
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your_username/stroke-prediction-project.git
+   git clone https://github.com/NabilRaiyan/Stroke-Prediction.git
    cd stroke-prediction-project
