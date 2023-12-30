@@ -7,7 +7,7 @@ This repository contains the code and documentation for a stroke prediction proj
 ## Dataset
 
 - The dataset used in this project contains 12 attributes and 5110 rows.
-- [Link to Dataset](provide_link_to_dataset)
+- [Link to Dataset]([provide_link_to_dataset](https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset?resource=download))
 
 ## Project Structure
 
