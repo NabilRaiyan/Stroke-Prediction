@@ -18,7 +18,7 @@ This repository contains the code and documentation for a stroke prediction proj
 - work_type: "children", "Govt_jov", "Never_worked", "Private" or "Self-employed"
 - Residence_type: "Rural" or "Urban"
 - avg_glucose_level: average glucose level in blood
-  - bmi: body mass index
+- bmi: body mass index
 - smoking_status: "formerly smoked", "never smoked", "smokes" or "Unknown"*
 - stroke: 1 if the patient had a stroke or 0 if not
 - Link to Dataset:  <a href="https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset?resource=download">Stroke Prediction Data set</a>
