@@ -15,12 +15,12 @@ This repository contains the code and documentation for a stroke prediction proj
 - hypertension: 0 if the patient doesn't have hypertension, 1 if the patient has hypertension
 - heart_disease: 0 if the patient doesn't have any heart diseases, 1 if the patient has a heart disease
 - ever_married: "No" or "Yes"
-7) work_type: "children", "Govt_jov", "Never_worked", "Private" or "Self-employed"
-8) Residence_type: "Rural" or "Urban"
-9) avg_glucose_level: average glucose level in blood
-10) bmi: body mass index
-11) smoking_status: "formerly smoked", "never smoked", "smokes" or "Unknown"*
-12) stroke: 1 if the patient had a stroke or 0 if not
+- work_type: "children", "Govt_jov", "Never_worked", "Private" or "Self-employed"
+- Residence_type: "Rural" or "Urban"
+- avg_glucose_level: average glucose level in blood
+  - bmi: body mass index
+- smoking_status: "formerly smoked", "never smoked", "smokes" or "Unknown"*
+- stroke: 1 if the patient had a stroke or 0 if not
 - Link to Dataset:  <a href="https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset?resource=download">Stroke Prediction Data set</a>
 
 ## Project Structure
