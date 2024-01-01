@@ -37,7 +37,6 @@ This repository contains the code and documentation for a stroke prediction proj
 
 
 ## Getting Started
-
 1. Clone the repository:
 
    ```bash
