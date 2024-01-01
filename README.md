@@ -23,6 +23,7 @@ This repository contains the code and documentation for a stroke prediction proj
 - stroke: 1 if the patient had a stroke or 0 if not
 - Link to Dataset:  <a href="https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset?resource=download">Stroke Prediction Data set</a>
 
+
 ## Project Structure
 - `data/`: Directory to store the dataset.
 - `notebooks/`: Jupyter notebooks containing data exploration, preprocessing, and model training.
