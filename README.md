@@ -1,6 +1,6 @@
 # Stroke Prediction Project
 
-## Overview
+## Overview 
 
 This repository contains the code and documentation for a stroke prediction project. The goal of the project is to predict the likelihood of a stroke based on a dataset with 12 attributes and 5110 rows.
 
