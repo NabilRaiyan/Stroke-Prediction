@@ -34,7 +34,7 @@ This repository contains the code and documentation for a stroke prediction proj
   - `3_model_training.ipynb`: Notebook for training the Naïve Bayes model.
 - `scripts/`: Python scripts for modular code components.
 - `requirements.txt`: File specifying project dependencies.
-- `README.md`: Project documentation.
+- `README.md`: Project documentation. 
 
 
 ## Getting Started
