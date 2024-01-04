@@ -33,6 +33,9 @@ This repository contains the code and documentation for a stroke prediction proj
 ## Tools Used
 - This project is implemented using R language and R-Studio.
 
+## Prerequisites
+- Make sure you have R and R-Studio installed on your machine. Additionally, install the required R packages specified in the project's dependencies.
+
 ## Getting Started
 - To get started with this project, follow these steps:
 1. Clone the repository: 
