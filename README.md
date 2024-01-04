@@ -30,6 +30,9 @@ This repository contains the code and documentation for a stroke prediction proj
 - The primary goal of this project is to build a predictive model that can assess the likelihood of a stroke based on the given attributes. Machine learning algorithms will be employed to analyze the dataset and make predictions, contributing to early detection and prevention efforts.
 
 
+## Tools Used
+- This project is implemented using R language and R-Studio.
+
 ## Getting Started
 - To get started with this project, follow these steps:
 1. Clone the repository: 
