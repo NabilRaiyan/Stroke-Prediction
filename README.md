@@ -40,3 +40,6 @@ This repository contains the code and documentation for a stroke prediction proj
    git clone https://github.com/NabilRaiyan/Stroke-Prediction.git
  2. Navigate to the project: 
    - cd your-project-path/stroke-prediction-project
+3. Open the project in R-Studio.
+4. Explore the dataset, code, and documentation provided.
+5. Run the code to see the analysis and predictions.
