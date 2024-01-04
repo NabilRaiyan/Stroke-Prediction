@@ -26,15 +26,8 @@ This repository contains the code and documentation for a stroke prediction proj
 - Link to Dataset:  <a href="https://www.kaggle.com/datasets/fedesoriano/stroke-prediction-dataset?resource=download">Stroke Prediction Data set</a> 
 
 
-## Project Structure 
-- `data/`: Directory to store the dataset. 
-- `notebooks/`: Jupyter notebooks containing data exploration, preprocessing, and model training.
-  - `1_data_exploration.ipynb`: Notebook for exploring the dataset.
-  - `2_data_preprocessing.ipynb`: Notebook for preprocessing the data.
-  - `3_model_training.ipynb`: Notebook for training the Naïve Bayes model.
-- `scripts/`: Python scripts for modular code components.
-- `requirements.txt`: File specifying project dependencies.
-- `README.md`: Project documentation.
+## Project Goal
+- The primary goal of this project is to build a predictive model that can assess the likelihood of a stroke based on the given attributes. Machine learning algorithms will be employed to analyze the dataset and make predictions, contributing to early detection and prevention efforts.
 
 
 ## Getting Started
