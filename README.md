@@ -31,6 +31,7 @@ This repository contains the code and documentation for a stroke prediction proj
 
 
 ## Getting Started
+- To get started with this project, follow these steps:
 1. Clone the repository: 
    ```bash
    git clone https://github.com/NabilRaiyan/Stroke-Prediction.git
